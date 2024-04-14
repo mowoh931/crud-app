@@ -9,7 +9,7 @@ pipeline {
         stage('Build with Maven') {
             steps {
                     sh 'mvn package'
-                }
             }
         }
-   }
+    }
+}
