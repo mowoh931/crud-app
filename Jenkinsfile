@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Clean') {
+    stage('Salute') {
       steps {
-        bat 'mvn clean'
+        echo 'Hello there'
       }
     }
 
