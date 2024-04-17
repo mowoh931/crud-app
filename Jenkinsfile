@@ -7,9 +7,21 @@ pipeline {
       }
     }
 
-    stage('Build') {
+    stage('Clean') {
       steps {
         bat 'mvn clean'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        bat 'clean install'
+      }
+    }
+
+    stage('End') {
+      steps {
+        echo 'End!'
       }
     }
 
