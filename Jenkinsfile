@@ -18,7 +18,6 @@ pipeline {
         bat 'clean install'
       }
     }
-
     stage('End') {
       steps {
         echo 'End!'
