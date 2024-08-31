@@ -26,12 +26,6 @@ pipeline {
             }
         }
 
-        // stage('SonarQube Analysis') {
-        //     steps{
-        //         withSonarQubeEnv('SonarQube') {
-        //             sh "mvn clean verify sonar:sonar -Dsonar.projectKey=crud-app -Dsonar.projectName='crud-app'"
-        //         }
-        //     }
         post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
@@ -43,6 +37,14 @@ pipeline {
                     echo'Build failed!'
                 }                
             }
+
+        stage('SonarQube Analysis') {
+            steps{
+                withSonarQubeEnv('SonarQube') {
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=crud-app -Dsonar.projectName='crud-app'"
+                }
+            }
+
         }
         
 
