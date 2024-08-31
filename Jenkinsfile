@@ -24,7 +24,6 @@ pipeline {
                 echo 'DP Checling'
                 echo "Builf No: ${BUILD_NUMBER}"
             }
-        }
 
         post {
                 // If Maven was able to run the tests, even if some of the test
@@ -37,15 +36,16 @@ pipeline {
                     echo'Build failed!'
                 }                
             }
-
-        stage('SonarQube Analysis') {
-            steps{
-                withSonarQubeEnv('SonarQube') {
-                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=crud-app -Dsonar.projectName='crud-app'"
-                }
-            }
-
         }
+
+        // stage('SonarQube Analysis') {
+        //     steps{
+        //         withSonarQubeEnv('SonarQube') {
+        //             sh "mvn clean verify sonar:sonar -Dsonar.projectKey=crud-app -Dsonar.projectName='crud-app'"
+        //         }
+        //     }
+
+        // }
         
 
     }
