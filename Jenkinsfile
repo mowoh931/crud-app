@@ -14,16 +14,18 @@ pipeline {
 
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                https://github.com/mowoh931/crud-app.git
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
-        stage('Trivy scan Repository') {
+        stage('Trivy Scan') {
             steps {
+              echo 'Scanning git repo.....'
                 sh 'trivy repo https://github.com/mowoh931/crud-app.git'
-                echo "Builf No: ${BUILD_NUMBER}"
             }
+        }        
         stage('Dependency Check') {
             steps {
                 echo 'DP Checling'
