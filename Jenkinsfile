@@ -19,6 +19,11 @@ pipeline {
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
+        stage('Trivy scan Repository') {
+            steps {
+                sh 'trivy repo https://github.com/mowoh931/crud-app.git'
+                echo "Builf No: ${BUILD_NUMBER}"
+            }
         stage('Dependency Check') {
             steps {
                 echo 'DP Checling'
