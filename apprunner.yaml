@@ -1,0 +1,14 @@
+version: 1.0
+runtime: java17
+build:
+  commands:
+    build:
+      - mvn clean package -DskipTests
+run:
+  runtime-version: corretto17
+  command: java -jar crud-app.jar
+  network:
+    port: 8080
+  env:
+    - name: SERVER_PORT
+      value: "8080"
