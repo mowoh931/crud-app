@@ -1,5 +1,5 @@
 version: 1.0
-runtime: java17
+runtime: java8
 build:
   commands:
     build:
